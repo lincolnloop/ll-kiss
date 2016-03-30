@@ -39,6 +39,6 @@ Lastly, you can compile the style guide as follows:
 
 You'll need to run `npm install` to build the dependencies needed to compile Scss. After doing this, simply run:
 
-    `npm run compile-scss`
+    npm run compile-scss
 
 This will generate the `kss.css` file needed to render styles for the guide.
