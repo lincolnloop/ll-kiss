@@ -83,15 +83,15 @@
             {{else}}
               {{autoincrement}}
             {{/ifNumeric}}
-            <span class="kss-title__permalink-hash">
-              {{#ifNumeric reference}}
-                #permalink
-              {{else}}
-                #{{reference}}
-              {{/ifNumeric}}
-            </span>
           </span>
           {{header}}
+          <span class="kss-title__permalink-hash">
+            {{#ifNumeric reference}}
+              #permalink
+            {{else}}
+              #{{reference}}
+            {{/ifNumeric}}
+          </span>
         </a>
       </h{{depth}}>
 
