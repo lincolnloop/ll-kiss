@@ -15,7 +15,7 @@
   "css": [
     "/static/css/screen.css"
   ],
-  
+
   "//": "Show lots of logging!",
   "verbose": true
 }
