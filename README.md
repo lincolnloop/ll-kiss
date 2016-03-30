@@ -11,19 +11,19 @@ First, clone ll-kss. Your cloned version does not need to live within your proje
 Next, we recommend setting up an example kss-node configuration file, typically named `kss-config.json`. An example configuration file looks like this:
 
     {
-      "//": "The title of your style guide. Used in page titles and in the guide header."
+      "//": "The title of your style guide. Used in page titles and in the guide header.",
       "title": "Title of my Style Guide",
-      "//": "Where to look for CSS/Scss/Less/whatever that you're parsing"
+      "//": "Where to look for CSS/Scss/Less/whatever that you're parsing",
       "source": "client/scss",
-      "//": "The directory where the guide will be built."
+      "//": "The directory where the guide will be built.",
       "destination": "build/styleguide",
-      "//": "The path to the template you're building from. In this case, ll-kss."
+      "//": "The path to the template you're building from. In this case, ll-kss.",
       "template": "ll-kss",
-      "//": "The CSS file that represents your project's styles."
+      "//": "The CSS file that represents your project's styles.",
       "css": [
         "/static/css/screen.css"
       ],
-      "//": "Show lots of logging!"
+      "//": "Show lots of logging!",
       "verbose": true
     }
 

@@ -1,0 +1,16 @@
+{
+  "//": "The title of your style guide. Used in page titles and in the guide header.",
+  "title": "Title of my Style Guide",
+  "//": "Where to look for CSS/Scss/Less/whatever that you're parsing",
+  "source": "client/scss",
+  "//": "The directory where the guide will be built.",
+  "destination": "build/styleguide",
+  "//": "The path to the template you're building from. In this case, ll-kss.",
+  "template": "ll-kss",
+  "//": "The CSS file that represents your project's styles.",
+  "css": [
+    "/static/css/screen.css"
+  ],
+  "//": "Show lots of logging!",
+  "verbose": true
+}
