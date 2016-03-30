@@ -12,6 +12,8 @@ $kss-colors-link-visited   : #0645ad;
 $kss-colors-link-hover     : lighten($kss-colors-link, 20%);
 $kss-colors-link-active    : #faa700;
 
+$kss-colors-brand          : #4ebfca;
+
 $kss-font-body             : Helvetica, Arial, sans-serif;
 $kss-font-code             : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
 
@@ -165,7 +167,7 @@ $kss-vertical-rhythm       : $kss-font-size * 1.5;
 #kss-node {
   margin: 0;
   padding: 20px;
-  border-top: 30px solid #4ebfca;
+  border-top: 30px solid $kss-colors-brand;
   background: #fff;
 
   @media screen and (min-width: 769px) {
