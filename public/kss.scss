@@ -256,13 +256,11 @@ $kss-vertical-rhythm       : $kss-font-size * 1.5;
       // we can put these :first-child and :last child styles back on the ul.
       li:first-child {
         margin: 10px 0 0;
-        border-top: 1px solid #ccc;
         padding: 10px 0 0;
       }
 
       li:last-child {
         margin: 0 0 10px;
-        border-bottom: 1px solid #ccc;
         padding: 0 0 10px;
       }
     }
