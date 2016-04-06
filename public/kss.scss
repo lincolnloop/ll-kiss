@@ -20,6 +20,77 @@ $kss-font-code             : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier Ne
 $kss-font-size             : 16px;
 $kss-vertical-rhythm       : $kss-font-size * 1.5;
 
+$kss-color-map             : (brand: $kss-colors-brand);
+
+// ------------------------------------------------------------------------------
+// Functional/Mixin helpers to aid us further down
+// ------------------------------------------------------------------------------
+
+/// Returns black or white depending on color argument. Useful for determining
+/// foreground color depending on background color.
+/// @param {Color} Reference color to check
+/// @return {Color} Color to use
+@function contrast-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+
+/// Take a map of colors and generates helpful classes to use them.
+/// @param {Map} $map A map of names with colors
+/// @param {Color} $bg-color Background color of the style guide. Default: #fff
+@mixin generate-palette-helpers($map, $bg-color: $kss-colors-background) {
+  $params-ok: true;
+
+  @if type-of($map) != "map" {
+    @warn "Parameter `#{$map}` must be a map.";
+    $error-pass: false;
+  }
+
+  @if $params-ok {
+    @each $name, $color in $map {
+      .kss-swatch__#{$name} {
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+                align-items: center;
+
+        width: 160px;
+        height: 160px;
+
+        border: 2px solid transparent;
+
+        // We don't want a white on white swatch, so make sure that we put a
+        // color around the swatch so it stands out. Note, this works regardless
+        // off casing or alternative naming, e.g. white = #FFF = #ffffff
+        @if $color == $bg-color {
+          border-color: #999;
+        }
+
+        border-radius: 50%;
+        background: $color;
+        text-align: center;
+        color: contrast-color($color);
+      }
+    }
+  }
+}
+
 // ------------------------------------------------------------------------------
 // Wrap all of this template's base HTML styling inside a .kss-style selector.
 // ------------------------------------------------------------------------------
@@ -342,6 +413,7 @@ $kss-vertical-rhythm       : $kss-font-size * 1.5;
   }
 
   .kss-modifier__wrapper {
+    margin-top: $kss-vertical-rhythm;
     border: 1px solid #ccc;
     padding: 10px;
   }
