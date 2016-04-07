@@ -114,7 +114,7 @@
     </div>
 
     {{#if markup}}
-      <div class="kss-modifier__wrapper">
+      <div class="kss-modifier__wrapper{{#unless chromeless}} kss-chromeless{{/unless}}">
         <div class="kss-modifier__heading kss-style">
           Example{{#if modifiers}}s{{/if}}
         </div>

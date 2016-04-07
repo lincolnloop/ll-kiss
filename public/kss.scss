@@ -405,7 +405,8 @@ $kss-colors-map            : (brand: $kss-colors-brand);
     padding: 0;
   }
 
-  .kss-chromeless .kss-modifier__heading {
+  .kss-chromeless .kss-modifier__heading,
+  .kss-chromeless .kss-markup {
     display: none;
   }
 
