@@ -114,34 +114,46 @@
     </div>
 
     {{#if markup}}
-      <div class="kss-modifier__wrapper{{#unless chromeless}} kss-chromeless{{/unless}}">
-        <div class="kss-modifier__heading kss-style">
-          Example{{#if modifiers}}s{{/if}}
-        </div>
+      <div class="kss-modifier__wrapper{{#if chromeless}} kss-chromeless{{/if}}">
+
+        {{#unless chromeless}}
+          <div class="kss-modifier__heading kss-style">
+            Example{{#if modifiers}}s{{/if}}
+          </div>
+        {{/unless}}
+
       {{#if modifiers}}
-        <div class="kss-modifier__default-name kss-style">
-          Default styling
-        </div>
+        {{#unless chromeless}}
+          <div class="kss-modifier__default-name kss-style">
+            Default styling
+          </div>
+        {{/unless}}
       {{/if}}
+
         <div class="kss-modifier__example">
           {{{markup}}}
         </div>
-      {{#eachModifier}}
-        <div class="kss-modifier__name kss-style">
-          {{name}}
-        </div>
-        <div class="kss-modifier__description kss-style">
-          {{{description}}}
-        </div>
-        <div class="kss-modifier__example">
-          {{{markup}}}
-        </div>
-      {{/eachModifier}}
+
+      {{#unless chromeless}}
+        {{#eachModifier}}
+          <div class="kss-modifier__name kss-style">
+            {{name}}
+          </div>
+          <div class="kss-modifier__description kss-style">
+            {{{description}}}
+          </div>
+          <div class="kss-modifier__example">
+            {{{markup}}}
+          </div>
+        {{/eachModifier}}
+      {{/unless}}
       </div>
 
-      <div class="kss-markup kss-style">
-        <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
-      </div>
+      {{#unless chromeless}}
+        <div class="kss-markup kss-style">
+          <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
+        </div>
+      {{/unless}}
     {{/if}}
 
     {{#ifDepth 1}}
