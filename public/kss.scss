@@ -20,7 +20,8 @@ $kss-font-code             : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier Ne
 $kss-font-size             : 16px;
 $kss-vertical-rhythm       : $kss-font-size * 1.5;
 
-$kss-color-map             : (brand: $kss-colors-brand);
+$kss-colors-map            : (brand: $kss-colors-brand);
+
 
 // ------------------------------------------------------------------------------
 // Functional/Mixin helpers to aid us further down
@@ -52,29 +53,6 @@ $kss-color-map             : (brand: $kss-colors-brand);
   @if $params-ok {
     @each $name, $color in $map {
       .kss-swatch__#{$name} {
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-                flex-direction: column;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-                justify-content: center;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-                align-items: center;
-
-        width: 160px;
-        height: 160px;
-
-        border: 2px solid transparent;
-
         // We don't want a white on white swatch, so make sure that we put a
         // color around the swatch so it stands out. Note, this works regardless
         // off casing or alternative naming, e.g. white = #FFF = #ffffff
@@ -82,9 +60,7 @@ $kss-color-map             : (brand: $kss-colors-brand);
           border-color: #999;
         }
 
-        border-radius: 50%;
         background: $color;
-        text-align: center;
         color: contrast-color($color);
       }
     }
@@ -304,6 +280,10 @@ $kss-color-map             : (brand: $kss-colors-brand);
     list-style-type: none;
   }
 
+  .kss-nav__menu a {
+    display: block;
+  }
+
   .kss-nav__menu-item {
     display: inline-block;
     padding-right: $kss-vertical-rhythm;
@@ -361,11 +341,12 @@ $kss-color-map             : (brand: $kss-colors-brand);
     margin-bottom: ($kss-vertical-rhythm * 2);
   }
 
-
   .kss-title {
     margin-bottom: 0;
   }
-  .kss-title__ref {
+
+  .kss-title__ref,
+  .kss-title__permalink-hash {
     display: inline-block;
     font-size: $kss-font-size;
     line-height: $kss-font-size;
@@ -467,6 +448,39 @@ $kss-color-map             : (brand: $kss-colors-brand);
     img {
       border: 0;
     }
+  }
+
+  [class^="kss-swatch__"] {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+            align-items: center;
+
+    width: 160px;
+    height: 160px;
+    margin-bottom: $kss-vertical-rhythm;
+
+    border: 2px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  // Generate color swatches if applicable
+  @if $kss-colors-map {
+    @include generate-palette-helpers($kss-colors-map);
   }
 
   // ------------------------------------------------------------------------------
